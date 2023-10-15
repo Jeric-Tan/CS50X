@@ -1,7 +1,8 @@
 
 // Initialize and start the game
-
-let hand = sort(generate(14));
+let hand = ['2🎱','3🎱','4🎱','6🎱','9🎱','1🎋','2🎋','3🎋','4🎋','5🎋','6🎋','6🀄','6🀄','6🀄'];
+// let hand = sort(generate(14));
+let num_turns = 0;
 
 document.getElementById("start-button").addEventListener("click", function(e) {
 
@@ -61,7 +62,7 @@ function sort(hand) {
 
 //Win condition
 function check(hand) {
-    console.log(`check is working! Hand: ${hand}`);
+    console.log(`CHECKED HAND: ${hand}`);
     let no_sets = 0;
     let no_pairs = 0;
 
@@ -114,7 +115,7 @@ function check(hand) {
 
 /// START OF FORMATTING
 //ADDING TILES
-//add a div per tile
+//add HTML for a div per tile
 function addTiles(tiles) {
     const tileContainer = document.getElementById('tile-container');
 
@@ -171,7 +172,7 @@ function displayDiscard(hand) {
             // Add the event listener to button
             discard.addEventListener('click', function() {
                 hand = onClickDiscard(hand, discard);
-                console.log(`when discard is clicked! Hand: ${hand}`);
+                console.log(`AFTER DISCARDING A CARD HAND: ${hand}`);
                 return hand;
             });
 
@@ -183,11 +184,7 @@ function displayDiscard(hand) {
     return hand;
 }
 
-
-
-
 function onClickDiscard(hand, discard) {
-    console.log(hand);
 
     //when discarding a HAND tile
     if (!discard.parentElement.classList.contains('drawnTile')) {
@@ -196,7 +193,6 @@ function onClickDiscard(hand, discard) {
 
         //adds the DRAWN tile to hand
         hand.push(drawnTile);
-
         //removes the HAND tile
         let firstOcc = true;
         hand = hand.filter(item => {
@@ -206,14 +202,28 @@ function onClickDiscard(hand, discard) {
             }
             return true;
         });
+
         discard.parentElement.remove();
+
     }
     //after each discard, draw and display a random card
     document.getElementById('drawnTile').remove();
     const newTile = generate(1);
     displayDrawnTile(newTile);
-    displayDiscard(newTile);
-    console.log(hand);
+    hand = sort(hand);
+    addTiles(hand);
+    displayDiscard(hand);
+    num_turns += 1;
+    let isWin = check(hand);
+    if (isWin == true) {
+        console.log('u won');
+        whenWin();
+    }
+    console.log(check(hand));
+    console.log(`Turn: ${num_turns}`);
+
+
+
     return hand;
 }
 
@@ -225,34 +235,32 @@ function startGame(hand) {
     document.getElementById('draw-container').appendChild(text);
 
     //loads in FIRST draw tile
-    let drawTile = generate(1);
+    //let drawTile = generate(1);
+    let drawTile = '9🎱';
     displayDrawnTile(drawTile);
 
     let num_turns = 0;
     console.log(`start: ${hand}`);
 
-    while (true) {
-        num_turns += 1;
-        console.log(num_turns);
-        //update the hand
-        console.log(`updating hand: ${hand}`);
-        addTiles(hand);
-        console.log(`updating hand: ${hand}`);
-        //generate & show random tile
+    addTiles(hand);
+    hand = displayDiscard(sort(hand));
 
+}
 
-        //creates html for tile drawn
+function whenWin() {
+    console.log('sup')
+    //create hmtl text
+    const winTextTurn = document.createElement('span');
+    winTextTurn.className = 'win-text-turn';
+    winTextTurn.textContent = `Congrats you have won in ${num_turns} turns!`;
+    document.getElementById('game-container').appendChild(winTextTurn);
 
-        hand = displayDiscard(sort(hand));
-        console.log(`last: ${hand}`);
-        console.log(`lastCheck: ${check(hand)}`);
-        return check(hand);
+    const winTextHand = document.createElement('span');
+    winTextHand.className = 'win-text-turn';
+    winTextHand.textContent = `Winning Hand was ${hand}`;
+    document.getElementById('game-container').appendChild(winTextHand);
 
-        //this creates and infinite loop 
-        //if (check(hand)) {
-        //  break;
-    }
+    //show winning hand
 
-    console.log("u won");
 
 }
