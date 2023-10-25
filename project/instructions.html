@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mahjong - Instructions</title>
+
+  </head>
+  <body class="bg-image2">
+    <div class="overlay"></div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/mahjong">
+        <img src="logo.png" alt="logo" width="30" height="30">
+        Mahjong
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/mahjong">Home</a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-success" id="restart-button" hidden>Restart Game</button>
+       </div>
+    </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mt-5 sect">How to Play</h1>
+
+        <!-- Objective Section -->
+        <div class="row mt-4">
+            <div class="col-md-6 section">
+                <h2>Objective</h2>
+                <p>The objective of the game is achieve 1 pair and 4 sets. A pair is two identical tiles.
+                    A set can either three identical tiles or three consecutive numbers in the same suit.
+                    A single tile cannot be used in two sets at once.</p>
+            </div>
+
+        </div>
+
+        <!-- Play Section -->
+        <div class="row mt-4">
+            <div class="col-md-6 section">
+                <h2>Play</h2>
+                <p>When the game starts, you are given 14 random tiles. Each turn a random tile would be drawn
+                    and players would need to decide if they want to keep the newly drawn tile or discard the drawn tile.
+                    If they decide to keep the newly drawn tile, the tile would replace the discarded tile chosen by the player.
+                    While if they decide to discard the drawn tile, there would be no changes to the hand and the next turn begins.
+                    At the end, the player's score would be the number of turns they took to win the game.</p>
+            </div>
+
+        </div>
+    </div>
+
+  </body>
+</html>

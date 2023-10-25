@@ -1,18 +1,26 @@
-
 // Initialize and start the game
 let hand = ['2🎱','3🎱','4🎱','6🎱','9🎱','1🎋','2🎋','3🎋','4🎋','5🎋','6🎋','6🀄','6🀄','6🀄'];
 // let hand = sort(generate(14));
 let num_turns = 0;
 
-document.getElementById("start-button").addEventListener("click", function(e) {
+document.getElementById("start-button").addEventListener("click", function() {
 
     //prevent multiple clicks of button
-    e.target.disabled = true;
+    document.getElementById("start-button").hidden = true;
+    document.getElementById("restart-button").hidden = false;
+    document.getElementById("div-turn").hidden = false;
+    document.getElementById("howtoplay").hidden = true;
+
+    document.querySelector('.background').classList.remove("bg-image2");
+    document.querySelector('.background').classList.add("bg-image1");
 
     //start of turn
     startGame(hand);
 });
 
+document.getElementById("howtoplay").addEventListener("click", function() {
+    window.location.href = "instructions.html";
+});
 //resets game
 document.getElementById("restart-button").addEventListener("click", function() {
     // Restart the game when button is clicked
@@ -126,7 +134,7 @@ function addTiles(tiles) {
     for (let i = 0; i < tiles.length; i++) {
         const tile = tiles[i];
         const tileElement = document.createElement('button');
-        tileElement.className = 'tile';
+        tileElement.className = 'tile  border-white rounded btn-success overflow-x-auto';
         tileElement.textContent = tile;
         tileContainer.appendChild(tileElement);
     }
@@ -137,9 +145,9 @@ function addTiles(tiles) {
 function displayDrawnTile(drawnTile) {
     const tileContainer = document.getElementById('draw-container');
     //display the drawn card
-    const tileElement = document.createElement('div');
+    const tileElement = document.createElement('button');
     tileElement.setAttribute('id', 'drawnTile');
-    tileElement.className = 'tile drawnTile';
+    tileElement.className = 'tile drawnTile border-white rounded';
     tileElement.textContent = drawnTile;
     tileContainer.appendChild(tileElement);
 
@@ -167,7 +175,7 @@ function displayDiscard(hand) {
             // Create discard button
             const discard = document.createElement('button');
             discard.textContent = 'Discard?';
-            discard.className = 'discard-button';
+            discard.className = 'discard-button border-white rounded';
 
             // Add the event listener to button
             discard.addEventListener('click', function() {
@@ -214,6 +222,9 @@ function onClickDiscard(hand, discard) {
     addTiles(hand);
     displayDiscard(hand);
     num_turns += 1;
+    //edit the turn count
+    document.getElementById('turn-count').textContent = `Turns: ${num_turns}`;
+
     let isWin = check(hand);
     if (isWin == true) {
         console.log('u won');
@@ -230,8 +241,8 @@ function onClickDiscard(hand, discard) {
 function startGame(hand) {
     //creates html for text
     const text = document.createElement('span');
-    text.className = 'drawnTile-text';
-    text.textContent = "Drawn Card: ";
+    text.className = 'drawnTile-text fs-5 fw-semibold';
+    text.textContent = "Drawn Tile: ";
     document.getElementById('draw-container').appendChild(text);
 
     //loads in FIRST draw tile
@@ -250,17 +261,28 @@ function startGame(hand) {
 function whenWin() {
     console.log('sup')
     //create hmtl text
-    const winTextTurn = document.createElement('span');
-    winTextTurn.className = 'win-text-turn';
+    const winTextTurn = document.createElement('div');
+    winTextTurn.className = 'win-text-turn fs-3';
     winTextTurn.textContent = `Congrats you have won in ${num_turns} turns!`;
-    document.getElementById('game-container').appendChild(winTextTurn);
+    //document.getElementById('game-container').appendChild(winTextTurn);
 
-    const winTextHand = document.createElement('span');
-    winTextHand.className = 'win-text-turn';
-    winTextHand.textContent = `Winning Hand was ${hand}`;
-    document.getElementById('game-container').appendChild(winTextHand);
+    const winTextHand = document.createElement('div');
+    winTextHand.className = 'win-text-turn fs-3';
+    winTextHand.textContent = "Your winning hand was:";
+    //document.getElementById('game-container').appendChild(winTextHand);
+
+    const gameDiv = document.getElementById('game-container');
+    const turnDiv = document.getElementById('div-turn');
+    const drawDiv = document.getElementById('draw-container');
+
+    gameDiv.replaceChild(winTextTurn, turnDiv);
+    gameDiv.replaceChild(winTextHand, drawDiv);
+
+    const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(function(tile) {
+        tile.disabled = true;
+    });
 
     //show winning hand
-
 
 }
