@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+
+    <div class="mb-3">
+        <h3>Stock Info</h1>
+        <p>Name: {{ name }}</p>
+        <p>Price: {{ price }}</p>
+
+    </div>
+
+    <div class ="mb-3">
+        <form actiion="/" method="get">
+            <button class="btn btn-primary" type="submit" >Back</button>
+        </form>
+    </div>
+
+
+
+
+{% endblock %}

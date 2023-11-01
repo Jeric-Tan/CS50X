@@ -1,0 +1,5 @@
+The user's audio aura is one that is more solemn with moderate danceability and energy.
+
+The way the average is calculated assumes that the listener listens to their top 100 songs for the same duration.
+Hence a better way could be to factor in the amount of time the listener spent listening to the songs and determine
+a respective weightage given to a song's energy, valence and danceability which contributes to the final average.

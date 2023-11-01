@@ -1,0 +1,9 @@
+# TODO
+
+def main():
+    name = input("What is your name? ")
+    print(name)
+    print(f"hello, {name}")
+
+
+main()

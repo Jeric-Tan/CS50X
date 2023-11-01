@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function()
+            {
+                //FOR MCQ
+                let all_btn = document.querySelectorAll(".MCQ");
+                let answer = document.querySelectorAll(".displayAnswer");
+
+                for (let i = 0; i < all_btn.length; i++)
+                {
+                    let btn = all_btn[i];
+
+                    btn.addEventListener('click', function() {
+                        reset();
+                        check(btn);
+                    });
+                }
+
+                function check(btn)
+                {
+                    if (btn.classList.contains('wrong')) {
+                        btn.style.backgroundColor = 'red';
+                        answer[0].innerHTML = 'Incorrect';
+                    }
+                    else if (btn.classList.contains('correct')) {
+                        btn.style.backgroundColor = 'green';
+                        answer[0].innerHTML = 'Correct!';
+                    }
+                    else{
+                        return;
+                    }
+                }
+
+                function reset()
+                {
+                    for (let i = 0; i < all_btn.length; i++) {
+                        all_btn[i].style.backgroundColor = '#d9edff';
+                    }
+                }
+
+                //FOR OPENENDED
+                let checkAnswer = document.querySelector(".checkButton");
+
+                checkAnswer.addEventListener('click', function() {
+                    let oe_answer = document.querySelector(".oe_answer").value;
+                    if (oe_answer.toLowerCase().trim() == "mercury") {
+                        checkAnswer.innerHTML = 'Correct!';
+                        checkAnswer.style.backgroundColor = 'green';
+                    }
+                    else if (oe_answer.toLowerCase() != "mercury") {
+                        checkAnswer.innerHTML = 'Incorrect!';
+                        checkAnswer.style.backgroundColor = 'red';
+                    }
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Q1. What mammal has the longest pregnancy?</h3>
+                <button type="button" class="MCQ wrong">Dolphins</button>
+                <button type="button" class="MCQ correct">Elephants</button>
+                <button type="button" class="MCQ wrong">Monkeys</button>
+                <button type="button" class="MCQ wrong">Goats</button>
+                <button type="button" class="MCQ wrong">Kangaroos</button>
+                <br>
+                <h3 class="displayAnswer"></h3>
+
+                <h3>Q2. What scientific base unit is used to measure mass?</h3>
+                <button type="button" class="MCQ 2 wrong">Gram</button>
+                <button type="button" class="MCQ 2 wrong">Pound</button>
+                <button type="button" class="MCQ 2 correct">Kilogram</button>
+                <button type="button" class="MCQ 2 wrong">Tonne</button>
+                <br>
+                <h3 class="displayAnswer"></h3>
+
+
+
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Q1. Which planent is the closest to Earth?</h3>
+                <input autocomplete="off" class="oe_answer" placeholder="Answer">
+                <button type="button" class="checkButton">Check Answer</button>
+
+            </div>
+        </div>
+    </body>
+</html>

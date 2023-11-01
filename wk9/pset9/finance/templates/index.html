@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div>
+
+        <span class ="mx-auto w-auto">Current Balance: ${{ current_bal }}</span>
+        <span class ="mx-auto w-auto">Total Evaluation ${{ eval }}</span>
+
+    </div>
+
+    <div class="table ">
+        <table class ="mx-auto w-auto">
+            <thead>
+                <tr>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Current Price</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+
+                    <td>{{ stock['stock']  }}</td>
+                    <td>{{ stock['amount']  }}</td>
+                    <td>${{ stock['price']  }}</td>
+                    <td>${{ stock['value']  }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

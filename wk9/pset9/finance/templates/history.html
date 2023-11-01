@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div>
+        <table class="mx-auto w-auto">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Transaction Type</th>
+                    <th>Stock Symbol</th>
+                    <th>Quantity</th>
+                    <th>Price/ea</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row['time'] }}</td>
+                    <td>{{ row['transaction_type'] }}</td>
+                    <td>{{ row['stock'] }}</td>
+                    <td>{{ row['qty'] }}</td>
+                    <td>{{ row['price'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+{% endblock %}

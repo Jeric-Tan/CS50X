@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Slowest for reversed list of numbers.
+
+sort2 uses: merge sort
+
+How do you know?: Shortest time taken among the 3 for both random and reversed numbers.
+
+sort3 uses: selection sort merge
+
+How do you know?: faster than sort1 but slower than sort2 for reversed number.

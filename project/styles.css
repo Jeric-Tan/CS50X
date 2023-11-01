@@ -3,16 +3,21 @@
     text-align: center;
     top: 40%;
 }
+#start-button:hover {
+    background-color: #18B245;
+}
 
 #howtoplay {
     text-align: center;
     top: 50%;
     right: 50%;
 }
+#howtoplay:hover {
+    background-color: #18B245;
+}
 
 .bg-image2 {
-    background:  url('bg2.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background:  url('images/bg2.jpg') no-repeat center center fixed;
 }
 
 
@@ -37,10 +42,14 @@
     border: 1px solid #ddd;
 }
 
+h1 {
+    color: black;
+}
+
 
 /*Gameplay*/
 .bg-image1 {
-    background:url('bg1.jpg') no-repeat center center fixed;
+    background:url('images/bg1.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -52,8 +61,7 @@
 
 .tile {
     display: inline-block;
-    width: 6%;
-    height: 10%;
+
     background-color: lightgray;
 
     line-height: 50px;
@@ -93,21 +101,5 @@
 
 .win-text-turn {
     text-align: center;
-}
-
-
-
-@media (max-width: 768px) {
-    /* For screens up to 768px wide (adjust this breakpoint as needed) */
-    .col-lg-1 {
-        flex: 0 0 calc(100% / 2); /* Change to two 7-column grids */
-        max-width: calc(100% / 2);
-    }
-}
-
-.centered {
-    text-align: center;
-    display: flex;
-    justify-content; center;
-    align-items: center;
+    color: #14DF0C;
 }

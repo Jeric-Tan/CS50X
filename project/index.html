@@ -10,14 +10,15 @@
 
 <body class="background bg-image2">
     <div>
-      <button id="start-button" class="position-absolute top-40 start-50 translate-middle w-50 p-2 fs-2">Start Game</button>
-      <button id="howtoplay" class="position-absolute top-50 start-50 translate-middle col-4 p-2 fs-2">How to Play</button>
+
+      <button id="start-button" class="position-absolute top-40 start-50 translate-middle w-50 p-2 fs-2 rounded">Start Game</button>
+      <button id="howtoplay" class="position-absolute top-50 start-50 translate-middle col-4 p-2 fs-2 rounded">How to Play</button>
     </div>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/mahjong">
-            <img src="logo.png" alt="logo" width="30" height="30">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="logo" width="30" height="30">
             Mahjong
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +27,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/mahjong">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
             </li>
             </ul>
             <button class="btn btn-outline-success" id="restart-button" hidden>Restart Game</button>
@@ -35,17 +36,17 @@
     </nav>
 
 
-    <div id="game-container">
-        <!-- Your game board and tiles will be placed here -->
-        <div id="div-turn" hidden>
-          <span><h3 id="turn-count" class="text-center fs-4 fw-semibold">Turns: 0</h3></span>
-        </div>
-        <div id="draw-container" class="text-center"></div>
-        <div id="tile-container" class="text-center"></div>
+    <div id="game-container" class="container">
+      <div id="div-turn" hidden>
+          <div><h3 id="turn-count" class="text-center fs-4 fw-semibold">Turns: 0</h3></div>
+      </div>
+      <div id="draw-container" class="text-center"></div>
+      <div id="tile-container" class="text-center">
+          <div class="col mb-4"></div>
+      </div>
     </div>
-
-    <div id="leaderboard"></div>
     <script src="app.js"></script>
+
 </body>
 
 
