@@ -1,2 +1,2 @@
 # CS50X
- Codes for Harvard's CS50X Course
+  My codes for CS50x by Harvard
